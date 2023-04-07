@@ -1,3 +1,0 @@
-[submodule "submodules/python-pylontech"]
-	path = submodules/python-pylontech
-	url = git@github.com:cl0-de/python-pylontech.git

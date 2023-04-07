@@ -3,7 +3,8 @@ from setuptools import setup, find_packages
 requiredPackages = [#should only contain third party pakages
     "coloredlogs",
     "pyserial",
-    "construct"
+    "construct",
+    "python-pylontech"
 ],
 
 setup(

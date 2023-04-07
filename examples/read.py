@@ -1,13 +1,12 @@
 import sys
 from pathlib import Path
 
-# Add project path to system path to facilitate imports of the digital twin submodules
+# # Add project path to system path to facilitate imports of the digital twin submodules
 # project_dir = Path(__file__).resolve().parents[1]
 # sys.path.append(str(project_dir) + "/submodules/python-pylontech")
 
 import pylontech
 import subprocess, time
-
 
 batList = {
     "bat1" : {
@@ -30,9 +29,15 @@ for elm in batList:
     time.sleep(1)# wait a second to create the socket
     batHandle.update({elm : pylontech.Pylontech(serial_port=batList[elm]["dev"])})
 
-for elm in batList:
-    for addr in batList[elm]["addr"]:
-        data = batHandle[elm].get_module_serial_number(addr)
-        print(  "Bat " + str(addr) + "\t" +
-                data["ModuleSerialNumber"].decode()
-        )
+
+while True:
+    for elm in batList:
+        for addr in batList[elm]["addr"]:
+            data = batHandle[elm].get_values_single(addr)
+            print(  "Bat " + str(addr) + "\t" +
+                    str(data["CycleNumber"]/100) + "\t" +
+                    str(data["Voltage"]) + "\t" +
+                    str(data["TotalCapacity"]) + "\t" +
+                    str(data["RemainingCapacity"]) + "\t"
+            )
+            #print(batHandle[elm].get_values_single(addr))
