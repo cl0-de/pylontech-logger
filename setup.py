@@ -12,5 +12,6 @@ setup(
     version="0.1",
     author="cl0-de",
     author_email="",
-    install_requires = requiredPackages
+    install_requires = requiredPackages,
+    packages = [],
 )
