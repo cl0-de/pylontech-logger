@@ -1,10 +1,3 @@
-import sys
-from pathlib import Path
-
-# # Add project path to system path to facilitate imports of the digital twin submodules
-# project_dir = Path(__file__).resolve().parents[1]
-# sys.path.append(str(project_dir) + "/submodules/python-pylontech")
-
 import pylontech
 import subprocess, time
 
